@@ -1,9 +1,7 @@
 import { renderTemplate, setActive, showPage } from "./utils.js"
-import { setupP2Handlers } from "./js-for-pages/page2.js"
-import { setUpPage3Handlers, getAllUsers } from "./js-for-pages/page3.js"
-
-
-
+import {getAllCars} from "./js-for-pages/seeourcars.js"
+import {addAddCarHandles} from "./js-for-pages/addcar.js"
+import {deleteDeleteCar} from "./js-for-pages/deletecar.js";
 
 function renderMenuItems(evt) {
   const element = evt.target
@@ -12,23 +10,28 @@ function renderMenuItems(evt) {
   renderTemplate(id)  //This setups the HTML for the page
   switch (id) {
     //Here you can execute JavaScript for the selected page
-    case "page-1": {
+    case "page-see-cars": {
+      getAllCars()
       break
     }
-    case "page-2": {
-      setupP2Handlers()
+    case "page-add-cars": {
+      addAddCarHandles()
+      deleteDeleteCar()
       break
     }
-    case "page-3": {
-      setUpPage3Handlers()
-      getAllUsers()
+    case "page-login": {
+      setupLoginHandlers()
+      break
+    }
+    case "page-logout": {
+      logout()
       break
     }
   }
 }
 
 document.getElementById("menu").onclick = renderMenuItems;
-showPage("page-1") //Set the default page to render
+showPage("page-about") //Set the default page to render
 
 
 
